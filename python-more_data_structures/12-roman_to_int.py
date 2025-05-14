@@ -6,4 +6,5 @@ def roman_to_int(roman_string):
             return 0
         elif roman_string is None:
             return 0
-    return roman_string(n)
+        else:
+            print("{:d}".format(n))
