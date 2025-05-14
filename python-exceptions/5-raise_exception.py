@@ -1,3 +1,3 @@
 #!/usr/bin/python3
 def raise_exception():
-    raise print("Exception raised")
+    raise ("Exception raised")
