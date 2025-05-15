@@ -9,6 +9,7 @@ Exemple :
 >>> from math import sqrt
 >>> sqrt(4)
 2.0
+````
 
 ✅ Pourquoi les tests sont-ils importants ?
 
@@ -75,25 +76,33 @@ def multiply(a, b):
 
 ⚙️ Quelles sont les options de base pour créer des tests ?
 
-Avec doctest, quelques options utiles sont disponibles :
+Avec `doctest`, quelques options utiles sont disponibles :
 
--v : mode verbeux, affiche les résultats détaillés
-+ELLIPSIS : ignore une partie de la sortie (utile si le résultat est long ou imprévisible)
-+NORMALIZE_WHITESPACE : ignore les différences d’espacement
+- `-v` : mode **verbeux**, affiche les résultats détaillés ligne par ligne.
+- `+ELLIPSIS` : ignore une partie de la sortie, très utile si le résultat est partiellement imprévisible (ex : longues chaînes).
+- `+NORMALIZE_WHITESPACE` : ignore les **différences d’espacement** (espaces ou tabulations).
+
 Exemple :
 `````
 python3 -m doctest -v fichier.py
 `````
+
 🧪 Comment trouver les cas limites (edge cases) ?
 
-Un cas limite est une situation extrême ou inhabituelle qui pourrait faire planter ou mal fonctionner le programme. Voici quelques exemples de cas à tester :
+Un **cas limite** (ou *edge case*) est une situation extrême ou inhabituelle qui pourrait faire planter ou mal fonctionner le programme.
 
-Entrée vide : "", [], None
-Valeurs très grandes ou très petites
-Types inattendus : chaîne au lieu de nombre, etc.
-Zéro, négatif
-Listes plus courtes ou plus longues que prévu
-Division par zéro
-Paramètres manquants ou supplémentaires
-Tester les cas limites te permet d’avoir un programme plus robuste, plus fiable, et prêt à affronter les imprévus.
+Voici quelques exemples de cas à tester :
+
+- Entrée vide : `""`, `[]`, `None`
+- Valeurs très grandes ou très petites
+- Types inattendus : par exemple une chaîne de caractères à la place d’un nombre
+- Valeur égale à zéro ou négative
+- Listes plus **courtes** ou plus **longues** que prévu
+- Division par zéro
+- Paramètres **manquants** ou **supplémentaires**
+
+✅ Tester ces cas permet d’avoir un programme :
+- plus **robuste**
+- plus **fiable**
+- mieux préparé aux situations imprévues
 
