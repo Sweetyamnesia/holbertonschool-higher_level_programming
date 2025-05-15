@@ -6,15 +6,15 @@ def list_division(my_list_1, my_list_2, list_length):
             element1 = my_list_1[i]
             element2 = my_list_2[i]
 
-            if element1 != int or float or element2 != int or float:
+            if not isinstance(element1, (int, float)) or not isinstance(element2, (int, float)):
                 print("wrong type")
-                result = 0
+                result.append(0)
             elif element2 == 0:
                 print("division by 0")
             else:
-                element1 / element2
+                result.append(element1 / element2)
     except IndexError:
-        print("out of range")
+            print("out of range")
     finally:
-        print("{:d}".format(list_length))
+            print("{:d}".format(list_length))
     return result
