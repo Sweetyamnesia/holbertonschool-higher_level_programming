@@ -9,3 +9,15 @@ My name is Walter White
 Traceback (most recent call last):
     ...
 TypeError: last_name must be a string
+
+# Test 3: first name is not a string
+>>> say_my_name(12, "White)
+Traceback (most recent call last):
+        ...
+TypeError: first_name must be a string
+
+# Test 4: missing two arguments
+>>> say_my_name()
+Traceback (most recent call last):
+        ...
+TypeError: missing arguments
