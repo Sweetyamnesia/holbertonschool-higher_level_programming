@@ -14,6 +14,16 @@ TypeError: size must be an integer
 
 
 def print_square(size):
+    """
+    Function that prints a square
+
+    Args:
+    size: the size length of the square.
+
+    Returns:
+    The square with #
+    """
+
     if not isinstance(size, (int)):
         raise TypeError("size must be an integer")
     elif size < 0:
