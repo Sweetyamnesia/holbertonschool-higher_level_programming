@@ -1,3 +1,4 @@
+>>> print_square = __import__('4-print_square').print_square
 
 # Test 1: size is an integer
 >>> print_square(4)
@@ -5,6 +6,6 @@
 
 # Test 2: size is a string
 >>> print_square("Bonjour")
+Traceback (most recent call last):
+		...
 TypeError: size must be an integer
-	...
-
