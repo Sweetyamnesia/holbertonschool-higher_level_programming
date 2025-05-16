@@ -10,4 +10,9 @@ TypeError : text must be a string
 def text_indentation(text):
     if not isinstance(text, (str)):
         raise TypeError("text must be a string")
-    print(f"{text}")
+
+    for char in text:
+        if char in [".", "?", ":"]:
+            print(f"{char}", end="\n\n")
+        else:
+            print(char, end="")
