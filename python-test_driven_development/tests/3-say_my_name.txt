@@ -1,0 +1,9 @@
+# Test 1: Two arguments are string
+>>> say_my_name("Walter", "White")
+Walter White
+
+# Test 2: One argument is a number:
+>>> say_my_name("Walter", 0)
+raise TypeError("last_name must be a string")
+ 		...
+TypeError: last_name must be a string
