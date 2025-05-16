@@ -40,3 +40,11 @@ TypeError: b must be an integer
 # Test 8: Large numbers
 >>> add_integer(1000000000, 2000000000)
 3000000000
+
+# Test 9: Float overflow
+>>> add_integer(1e1000, 5)
+OverflowError: cannot convert float infinity to integer
+
+# Test 10: Test present: cannot convert float NaN to integer
+>>> add_integer(float('nan'), 5)
+ValueError: cannot convert float NaN to integer
