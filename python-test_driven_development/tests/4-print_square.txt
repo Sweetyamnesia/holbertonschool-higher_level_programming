@@ -3,6 +3,9 @@
 # Test 1: size is an integer
 >>> print_square(4)
 ####
+####
+####
+####
 
 # Test 2: size is a string
 >>> print_square("Bonjour")
