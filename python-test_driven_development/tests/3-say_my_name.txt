@@ -1,3 +1,5 @@
+say_my_name = __import__('3-say_my_name').say_my_name
+
 # Test 1: Two arguments are string
 >>> say_my_name("Walter", "White")
 Walter White
