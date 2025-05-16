@@ -12,6 +12,7 @@
 196
 
 # Test 3: Floats should be cast to integers before addition
+# 100.7 → 100, -0.8 → 0 → 100 + 0 = 100
 >>> add_integer(100.7, -0.8)
 100
 
@@ -28,6 +29,7 @@ Traceback (most recent call last):
 TypeError: b must be an integer
 
 # Test 6: Both values are floats
+# 1.9 → 1, 2.1 → 2 → 1 + 2 = 3
 >>> add_integer(1.9, 2.1)
 3
 
