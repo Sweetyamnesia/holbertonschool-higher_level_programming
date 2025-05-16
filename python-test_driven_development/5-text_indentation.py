@@ -8,6 +8,16 @@ TypeError : text must be a string
 
 
 def text_indentation(text):
+    """
+    Function that prints a text
+
+    Args:
+    text: the string to print
+
+    Returns:
+    The text.
+    """
+
     if not isinstance(text, (str)):
         raise TypeError("text must be a string")
 
