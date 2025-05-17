@@ -29,5 +29,5 @@ def text_indentation(text):
 
         print(char, end="")
         if char in [".", "?", ":"]:
-            print("\n")
+            print()
             new_line = True
