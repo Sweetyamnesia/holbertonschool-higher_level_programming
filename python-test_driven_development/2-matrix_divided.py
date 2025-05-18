@@ -1,4 +1,10 @@
 #!/usr/bin/python3
+"""
+This module defines a function `matrix_divided`
+which divides all elements of a matrix by a given divisor.
+"""
+
+
 def matrix_divided(matrix, div):
     """
     Divides all elements of a matrix by a given number.
