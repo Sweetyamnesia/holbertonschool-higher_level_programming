@@ -23,15 +23,15 @@ def text_indentation(text):
     if not isinstance(text, (str)):
         raise TypeError("text must be a string")
 
+    result = ""
     i = 0
     while i < len(text):
+        result += text[i]
         if text[i] in ['.', '?', ':']:
-            print(text[i], end="")
-            print('\n')
-            # skip spaces after punctuation
+            result += '\n'
             i += 1
             while i < len(text) and text[i] == ' ':
                 i += 1
-        else:
-            print(text[i], end="")
-            i += 1
+            continue
+        i += 1
+    return result
