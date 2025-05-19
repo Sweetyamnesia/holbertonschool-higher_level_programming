@@ -22,13 +22,8 @@ class Square:
             TypeError: If size is not an integer.
             ValueError: If size is less than 0.
         """
-        self.size = size
+        self.__size = size
         if not isinstance(size, int):
             raise TypeError("size must be an integer")
         elif size < 0:
             raise ValueError("size must be >= 0")
-
-
-# Create an instance of the Square class
-s = Square(size=3)
-print(s)
