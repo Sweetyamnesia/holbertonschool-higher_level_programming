@@ -12,4 +12,3 @@ class Rectangle:
     This is a placeholder class used to illustrate the structure
     of a class in Python.
     """
-    pass
