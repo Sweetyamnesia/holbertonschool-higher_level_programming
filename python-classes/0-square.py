@@ -7,9 +7,10 @@ It is a basic example to illustrate object-oriented programming in Python.
 
 class Square:
     """
-    A class that represents a square.
+    Represents an empty square.
 
-    Currently, this class does not define any attributes or methods.
+    This is a placeholder class used to illustrate the structure
+    of a class in Python.
     """
     pass
 
