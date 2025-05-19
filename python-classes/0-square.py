@@ -13,8 +13,3 @@ class Square:
     of a class in Python.
     """
     pass
-
-
-# Create an instance of the Square class
-s = Square()
-print(s)
