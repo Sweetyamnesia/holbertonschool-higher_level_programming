@@ -1,5 +1,4 @@
 #!/usr/bin/python3
-#!/usr/bin/python3
 """
 This module defines a class named Rectangle.
 It is a basic example to illustrate object-oriented programming in Python.
@@ -100,7 +99,7 @@ class Rectangle:
         Returns:
             int: The area of the rectangle.
         """
-        return self.width ** 1
+        return self.width * self.height
 
     def perimeter(self):
         """
@@ -109,4 +108,4 @@ class Rectangle:
         Returns:
             int: The perimeter of the rectangle.
         """
-        return self.height ** 1
+        return (self.width + self.height) * 2
