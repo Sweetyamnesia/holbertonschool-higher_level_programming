@@ -12,9 +12,4 @@ class Square:
     This class does define one private instance attribute : size.
     """
     def __init__(self, size):
-        self.size = size
-
-
-# Create an instance of the Square class
-s = Square(size=None)
-print(s)
+        self.__size = size
