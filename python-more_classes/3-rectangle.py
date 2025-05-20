@@ -113,7 +113,11 @@ class Rectangle:
         """
         if self.width == 0 or self.height == 0:
             return ""
-        else:
-            for _ in range(self.height):
-                return "#" * (self.height + self.width)
+
+        result = ""
+        for i in range(self.height):
+            result += "#" * self.width
+            if i != self.height - 1:
+                result += "\n"
+        return result
 
