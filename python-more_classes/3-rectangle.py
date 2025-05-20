@@ -112,8 +112,8 @@ class Rectangle:
             The rectangle with character #.
         """
         if self.width == 0 or self.height == 0:
-            print()
+            return ""
         else:
             for _ in range(self.height):
-                return "#" * self.height
+                return "#" * (self.height + self.width)
 
