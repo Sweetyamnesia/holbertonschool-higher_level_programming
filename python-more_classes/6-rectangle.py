@@ -132,14 +132,9 @@ class Rectangle:
         """
         print message when instance of Rectangle is deleted
         """
-        print("Bye rectangle...")
-
-
-class number_of_instances:
-    """
-    Create public class attribute number_of_instances
-    """
-    def __init__(self):
+        number_of_instances = Rectangle()
         count = 0
         self.count = count
-        number_of_instances.count += 1
+        print(f"{number_of_instances}")
+        print("Bye rectangle...")
+        self.count += 1
