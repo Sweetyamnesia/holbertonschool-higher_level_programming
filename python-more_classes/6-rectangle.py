@@ -12,6 +12,8 @@ class Rectangle:
     This is a placeholder class used to illustrate the structure
     of a class in Python.
     """
+    number_of_instances = 0
+
     def __init__(self, width=0, height=0):
         """
         Initialize a new Rectangle.
@@ -26,6 +28,7 @@ class Rectangle:
         """
         self.width = width
         self.height = height
+        Rectangle.number_of_instances += 1
 
     @property
     def width(self):
@@ -132,9 +135,5 @@ class Rectangle:
         """
         print message when instance of Rectangle is deleted
         """
-        number_of_instances = Rectangle()
-        count = 0
-        self.count = count
-        print(f"{number_of_instances}")
+        Rectangle.number_of_instances -= 1
         print("Bye rectangle...")
-        self.count += 1
