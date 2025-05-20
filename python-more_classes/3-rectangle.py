@@ -120,4 +120,3 @@ class Rectangle:
             if i != self.height - 1:
                 result += "\n"
         return result
-
