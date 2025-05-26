@@ -12,14 +12,11 @@ class BaseGeometry:
     This is a placeholder class used to illustrate the structure
     of a class in Python.
     """
-    pass
 
     def area(self):
         raise Exception("area() is not implemented")
 
     def integer_validator(self, name, value):
-        self.name = name
-        self.value = value
         if not isinstance(value, int):
             raise TypeError(f'{name} must be an integer')
         if value <= 0:
@@ -28,5 +25,14 @@ class BaseGeometry:
 
 class Rectangle(BaseGeometry):
     def __init__(self, width, height):
+        self.integer_validator("width", width)
+        self.integer_validator("height", height)
         self.__width = width
         self.__height = height
+
+    def __repr__(self):
+        """
+        Return a string representation of the rectangle and
+        recreate a new instance.
+        """
+        return f"Rectangle({self.__width}, {self.__height})"
