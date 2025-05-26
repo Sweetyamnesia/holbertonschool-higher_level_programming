@@ -3,3 +3,8 @@
 # Test 1: if an element is a int
 >>> def print_sorted(self)
 [1, 4, 2, 3, 5]
+
+# Test 2: if there are no element
+>>> def print_sorted()
+	...
+AttributeError: 'MyList' object has no attribute 'append'
