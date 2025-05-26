@@ -1,0 +1,5 @@
+>>> MyList = __import__('1-my_list').MyList
+
+# Test 1: if an element is a int
+>>> def print_sorted(self)
+[1, 4, 2, 3, 5]
