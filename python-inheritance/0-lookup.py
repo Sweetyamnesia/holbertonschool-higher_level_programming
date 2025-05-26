@@ -8,4 +8,4 @@ Return : a list of object
 
 
 def lookup(obj):
-    print(vars(obj))
+    print(dir(obj))
