@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""Module that defines the MyList class. 
+"""Module that defines the MyList class.
 
 This class inherits fromt the built-in list lcass and adds a method
 to print the list in sorted (ascending) order.
