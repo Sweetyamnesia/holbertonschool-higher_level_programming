@@ -1,9 +1,12 @@
 #!/usr/bin/python3
 """
-Function that returns the list of available attributes
-and methods of an object
+Returns the list of available attributes and methods of an object.
 
-Return : a list of object
+Args:
+    obj: Any Python object.
+
+Returns:
+    list: A list of strings representing the object's attributes and methods.
 """
 
 
