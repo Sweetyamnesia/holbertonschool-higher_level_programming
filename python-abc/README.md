@@ -35,7 +35,7 @@ Maîtriser les interfaces et le duck typing afin de garantir qu’un objet respe
 
 "If it looks like a duck and quacks like a duck, it’s a duck."
 
-```
+```python
 class Duck:
     def quack(self):
         print("Quack!")
@@ -48,7 +48,7 @@ def make_it_quack(thing):
 
 Étendre des classes de base comme list, dict, ou des itérateurs pour créer des structures de données personnalisées avec un comportement spécialisé.
 
-```
+```python
 class CustomList(list):
     def sum(self):
         return sum(self)
@@ -58,7 +58,7 @@ class CustomList(list):
 
 Modifier ou étendre le comportement des méthodes d'une classe parente dans une classe enfant.
 
-```
+```python
 class Parent:
     def greet(self):
         print("Hello")
@@ -72,7 +72,7 @@ class Child(Parent):
 
 Comprendre et utiliser l’héritage multiple pour former des relations complexes entre classes. Utiliser avec précaution à cause de la complexité potentielle (ex. résolution de méthode via MRO).
 
-```
+```python
 class A:
     def do_something(self):
         print("A")
@@ -92,7 +92,7 @@ c.do_something()  # Affiche "A" à cause de MRO
 
 Utiliser les mixins pour composer des comportements réutilisables entre classes non liées, sans avoir à créer de hiérarchie complexe.
 
-```
+```python
 class JsonMixin:
     def to_json(self):
         import json
