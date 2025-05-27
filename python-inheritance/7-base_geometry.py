@@ -12,7 +12,6 @@ class BaseGeometry:
     This is a placeholder class used to illustrate the structure
     of a class in Python.
     """
-    pass
 
     def area(self):
         raise Exception("area() is not implemented")
