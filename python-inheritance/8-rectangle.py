@@ -51,9 +51,10 @@ class Rectangle(BaseGeometry):
         self.__width = width
         self.__height = height
 
-    def __repr__(self):
-        """
-        Return a string representation of the rectangle and
-        recreate a new instance.
-        """
-        return f"Rectangle({self.__width}, {self.__height})"
+    @property
+    def width(self):
+        return self.__width
+      
+    @property
+    def heigth(self):
+        return self.__height
