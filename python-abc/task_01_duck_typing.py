@@ -18,13 +18,11 @@ class Circle(Shape):
         self.radius = radius
 
     def area(self):
-        radius = 0
-        area = math.pi * radius ** 2
+        area = math.pi * self.radius ** 2
         return area
 
     def perimeter(self):
-        radius = 0
-        perimeter = 2 * math.pi * radius
+        perimeter = 2 * math.pi * self.radius
         return perimeter
 
 
