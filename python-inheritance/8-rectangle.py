@@ -4,6 +4,11 @@ This module defines a class named BaseGeometry.
 It is a basic example to illustrate object-oriented programming in Python.
 """
 
+BaseGeometry = __import__('7-base_geometry').BaseGeometry
+"""
+Importation of the BaseGeometry module"
+"""
+
 
 class BaseGeometry:
     """
@@ -54,7 +59,7 @@ class Rectangle(BaseGeometry):
     @property
     def width(self):
         return self.__width
-      
+
     @property
     def heigth(self):
         return self.__height
