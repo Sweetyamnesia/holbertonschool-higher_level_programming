@@ -4,6 +4,11 @@ This module defines a class named BaseGeometry.
 It is a basic example to illustrate object-oriented programming in Python.
 """
 
+BaseGeometry = __import__('7-base_geometry').BaseGeometry
+"""
+Importation of the BaseGeometry module"
+"""
+
 
 class BaseGeometry:
     """
@@ -12,6 +17,20 @@ class BaseGeometry:
     This is a placeholder class used to illustrate the structure
     of a class in Python. Intended to be extended by subclasses.
     """
+
+    def area(self):
+        """
+        Calculates the area of the geometry.
+
+        This method is not implemented here because the base class
+        does not know the shape. It should be overridden by subclasses.
+
+        Raises:
+            Exception: Always, indicating the method must be
+            implemented in a subclass.
+        """
+        raise Exception("area() is not implemented")
+
     def integer_validator(self, name, value):
         """
         Validates that a value is a positive integer.
@@ -31,7 +50,25 @@ class BaseGeometry:
 
 
 class Rectangle(BaseGeometry):
+    """
+    Represents a rectangle using width and height.
+
+    This class inherits from BaseGeometry and validates its dimensions
+    using the integer_validator method from the base class.
+    """
+
     def __init__(self, width, height):
+        """
+        Initialize a new Rectangle instance with validated dimensions.
+
+        Args:
+            width (int): The width of the rectangle.
+            height (int): The height of the rectangle.
+
+        Raises:
+            TypeError, ValueError: If width or height are not valid integers.
+        """
+
         self.integer_validator("width", width)
         self.integer_validator("height", height)
         self.__width = width
@@ -39,13 +76,34 @@ class Rectangle(BaseGeometry):
 
     @property
     def width(self):
+        """
+        Get the width of the rectangle.
+
+        Returns:
+            int: The private __width attribute.
+        """
+
         return self.__width
 
     @property
     def heigth(self):
+        """
+        Get the height of the rectangle.
+
+        Returns:
+            int: The private __height attribute.
+        """
+
         return self.__height
 
     def __str__(self):
+        """
+        Returns a user-friendly string representation of the Rectangle.
+
+        Format: [Rectangle] <width>/<height>
+        This method overrides the default string conversion to provide
+        a readable and informative display of the rectangle's dimensions.
+        """
         return f"[Rectangle] {self.__width}/{self.__height}"
 
     def area(self):
