@@ -35,27 +35,6 @@ class Rectangle(BaseGeometry):
         self.__width = width
         self.__height = height
 
-    @property
-    def width(self):
-        """
-        Get the width of the rectangle.
-
-        Returns:
-            int: The private __width attribute.
-        """
-
-        return self.__width
-
-    @property
-    def heigth(self):
-        """
-        Get the height of the rectangle.
-
-        Returns:
-            int: The private __height attribute.
-        """
-
-        return self.__height
 
     def __str__(self):
         """
