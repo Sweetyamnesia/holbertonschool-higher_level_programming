@@ -1,20 +1,44 @@
 >>> MyList = __import__('1-my_list').MyList
 
-# Test 1: List with integers
+# Création d'une instance et ajout d'éléments
 >>> my_list = MyList()
->>> my_list.append(4)
+>>> my_list.append(5)
 >>> my_list.append(1)
 >>> my_list.append(3)
->>> print(my_list)
-[4, 1, 3]
->>> my_list.print_sorted()
-[1, 3, 4]
->>> print(my_list)
-[4, 1, 3]
+>>> my_list.append(2)
+>>> my_list.append(4)
 
-# Test 2: Empty list
->>> empty = MyList()
->>> print(empty)
+# Affichage de la liste normale
+>>> print(my_list)
+[5, 1, 3, 2, 4]
+
+# Affichage trié sans modifier l'ordre
+>>> my_list.print_sorted()
+[1, 2, 3, 4, 5]
+
+# Vérification que la liste n'a pas changé
+>>> print(my_list)
+[5, 1, 3, 2, 4]
+
+# Test avec une liste vide
+>>> empty_list = MyList()
+>>> empty_list.print_sorted()
 []
->>> empty.print_sorted()
-[]
+
+# Test avec des doublons
+>>> dup_list = MyList()
+>>> dup_list.append(2)
+>>> dup_list.append(1)
+>>> dup_list.append(2)
+>>> dup_list.append(3)
+>>> dup_list.print_sorted()
+[1, 2, 2, 3]
+
+# Test avec valeurs négatives
+>>> neg_list = MyList()
+>>> neg_list.append(-3)
+>>> neg_list.append(0)
+>>> neg_list.append(2)
+>>> neg_list.append(-1)
+>>> neg_list.print_sorted()
+[-3, -1, 0, 2]
