@@ -102,3 +102,11 @@ class Person(JsonMixin):
     def __init__(self, name):
         self.name = name
 ```
+
+## Ressources Complémentaires
+
+📘 Python 3 Object-Oriented Programming – Livre de référence
+🧩 ABC — Abstract Base Classes – Documentation officielle : https://docs.python.org/3/library/abc.html
+🐍 Real Python - OOP in Python 3 – Tutoriels approfondis : https://realpython.com/python3-object-oriented-programming/
+🎥 Corey Schafer - OOP Playlist – Excellente série vidéo : YouTube Playlist
+🎓 sentdex - Python OOP Tutorial – Tutoriels pratiques : YouTube Channel
