@@ -48,9 +48,9 @@ class Rectangle(BaseGeometry):
 
     def area(self):
         """
-        Calculates the area of the geometry.
+        Calculates the area of the rectange.
 
         Returns:
-            int: the area of the geometry
+            int: the area of the rectangle
         """
-        return self.width * self.heigth
+        return self.__width * self.__height
