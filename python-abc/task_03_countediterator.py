@@ -13,8 +13,6 @@ class CountedIterator:
         return self
 
     def __next__(self):
-        # Increment self.count before returning the next item
-        self.count += 1
         value = next(self.iterator)
         return value
 
