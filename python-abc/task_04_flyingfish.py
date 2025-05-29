@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 class Fish:
     def swim(self):
-        print("The fish is swimming")
+        print("The fish is swimming!")
 
     def habitat(self):
         print("The fish lives in water")
@@ -20,7 +20,9 @@ class FlyingFish(Fish, Bird):
         print("The flying fish is soaring!")
 
     def swim(self):
-        print("The flying fish is swimming")
+        print("The flying fish is swimming!")
 
     def habitat(self):
         print("The flying fish lives both in water and the sky!")
+
+FlyingFish.mro()
