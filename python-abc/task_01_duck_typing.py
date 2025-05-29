@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 from abc import ABC, abstractmethod   # For creating abstract base classes
-import math   # Provides access to mathematical functions and constants
+from math import pi   # Provides access to mathematical functions and constants
 
 
 class Shape(ABC):
@@ -22,11 +22,11 @@ class Circle(Shape):
 
     def area(self):
         # Compute and return the area of the circle
-        return math.pi * self.radius ** 2
+        return pi * self.radius ** 2
 
     def perimeter(self):
         # Compute and return the perimeter (circumference) of the circle
-        return 2 * math.pi * self.radius
+        return 2 * pi * self.radius
 
 
 class Rectangle(Shape):
