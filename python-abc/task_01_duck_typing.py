@@ -47,5 +47,5 @@ class Rectangle(Shape):
 # Function that prints information about any shape-like object
 # Assumes the object has .area() and .perimeter() methods (duck typing)
 def shape_info(shape):
-    print(f"Area: {shape.area()}")
-    print(f"Perimeter: {shape.perimeter()}")
+    print("Area: {}".format(shape.area()))
+    print("Perimeter: {}".format(shape.perimeter()))
