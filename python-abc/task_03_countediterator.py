@@ -13,7 +13,9 @@ class CountedIterator:
         return self
 
     def __next__(self):
+        # increment self.count before returning the next item
         value = next(self.iterator)
+        self.counter += 1
         return value
 
     def get_count(self):
