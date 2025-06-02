@@ -1,7 +1,11 @@
 #!/usr/bin/python3
+"""
+This module contains a function that reads and prints
+the contents of a text file.
+"""
 
 def read_file(filename=""):
-    # function which reads a text file
+    """Reads a text file and prints its contents."""
     with open("my_file_0.txt", "r")as file:
         content = file.read()
     print(content)
