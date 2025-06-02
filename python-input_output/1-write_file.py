@@ -8,5 +8,5 @@ def write_file(filename="", text=""):
 	"""Write a string to a text file and prints number of characters."""
 	with open(filename, "w", encoding="utf-8") as file:
 		content = file.write(text)
-	print(content)
+	return (content)
 	
