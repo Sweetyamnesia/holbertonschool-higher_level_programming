@@ -20,8 +20,11 @@ class CustomObject:
         """
         if not filename:
             return None
-        with open(filename, "wb") as file:
-            pickle.dump(self, file)
+        try:
+            with open(filename, "wb") as file:
+                pickle.dump(self, file)
+        except Exception:
+            return None
         pass
 
 
@@ -32,6 +35,9 @@ class CustomObject:
         """
         if not filename:
             return None
-        with open(filename, "rb") as file:
-            return pickle.load(file)
+        try:
+            with open(filename, "rb") as file:
+                return pickle.load(file)
+        except Exception:
+            return None
         pass
