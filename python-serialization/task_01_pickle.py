@@ -18,16 +18,20 @@ class CustomObject:
         """
          Serializes the current object to a binary file using pickle.
         """
+        if not filename:
+            return None
         with open(filename, "wb") as file:
-            pickle.dump(filename, file)
+            pickle.dump(self, file)
         pass
 
 
-@classmethod
-def deserialize(cls, filename):
-    """
-    Deserializes an object from a binary file using pickle.
-    """
-    with open(filename, "rb") as file:
-        return pickle.load(file)
-    pass
+    @classmethod
+    def deserialize(cls, filename):
+        """
+        Deserializes an object from a binary file using pickle.
+        """
+        if not filename:
+            return None
+        with open(filename, "rb") as file:
+            return pickle.load(file)
+        pass
