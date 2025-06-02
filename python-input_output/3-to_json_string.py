@@ -5,6 +5,9 @@ representation of an object (string).
 """
 
 
+import json
+
 def to_json_string(my_obj):
     """Function which returns the JSON string"""
-    return str(my_obj)
+    res = json.dumps(my_obj)
+    return res
