@@ -25,7 +25,6 @@ class CustomObject:
                 pickle.dump(self, file)
         except Exception:
             return None
-        pass
 
 
     @classmethod
@@ -37,7 +36,8 @@ class CustomObject:
             return None
         try:
             with open(filename, "rb") as file:
-                return pickle.load(file)
+                obj = pickle.load(file)
+            if isinstance(obj, cls):
+                return obj
         except Exception:
             return None
-        pass
