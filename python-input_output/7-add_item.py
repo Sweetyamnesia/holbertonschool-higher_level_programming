@@ -23,6 +23,6 @@ def load_from_json_file(filename):
 
 args = sys.argv[1:]
 filename = "add_item.json"
-with open(filename, 'a', encoding="utf-8") as file:
+with open(filename, 'w', encoding="utf-8") as file:
     my_list = load_from_json_file(filename)
     save_to_json_file(my_list, filename)
