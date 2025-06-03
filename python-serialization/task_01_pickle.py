@@ -17,7 +17,7 @@ class CustomObject:
     def display(self):
         print("Name:", self.name)
         print("Age:", self.age)
-        print("Is Student:", True)
+        print("Is Student:", self.is_student)
 
     def serialize(self, filename):
         """
@@ -45,3 +45,4 @@ class CustomObject:
                 return None
         except Exception:
             return None
+        return obj
