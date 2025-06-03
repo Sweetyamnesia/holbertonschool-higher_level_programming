@@ -19,11 +19,14 @@ def convert_csv_to_json(filename):
         with open(filename, "r", encoding="utf-8") as csv_file:
             data = list(csv.DictReader(csv_file))
 
-        "Create the JSON filename by replacing the .csv extension with .json"
-        json_filename = filename.replace(".csv", ".json")
+        """
+        JSON output file is fixed as 'data.json'
+        """
+        json_filename = "data.json"
         with open(json_filename, "w", encoding="utf-8") as json_file:
             json.dump(data, json_file, indent=4)
         return True
+
     except Exception:
         print("file not found")
         return False
