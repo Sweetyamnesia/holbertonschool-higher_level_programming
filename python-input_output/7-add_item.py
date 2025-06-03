@@ -6,27 +6,8 @@ and save them to a file.
 
 import sys
 import json
-save_to_json_file = __import__('5-save_to_json_file').save_to_json_file
-load_from_json_file = __import__('6-load_from_json_file').load_from_json_file
-
 
 args = sys.argv[1:]
 filename = "add_item.json"
-
-"""
-Check if the JSON file already exists
-"""
-if filename:
-    items = load_from_json_file(filename)
-else:
-    items = []
-
-"""
-Add the new command-line arguments to the existing list
-"""
-items.extend(args)
-
-"""
-Save the updated list back to the JSON file
-"""
-save_to_json_file(items, filename)
+with open(filename, 'w', encoding="utf-8") as file:
+    json.dump(args, file)
