@@ -12,9 +12,8 @@ def serialize_to_xml(dictionary, filename):
     element = element(filename)
     for key, value in dictionary.items():
         "Create an element"
-        child = element(key)
+        child = ET.SubElement(root, key)
         child.text = str(value)
-        element.append(child)
     return element
 
 
@@ -29,5 +28,5 @@ def deserialize_from_xml(filename):
 
     result = {}
     for child in root:
-        result(child.tag) = child.text
+        result[child.tag] = child.text
     return result
