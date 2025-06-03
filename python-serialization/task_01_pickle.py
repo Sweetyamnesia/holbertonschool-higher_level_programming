@@ -14,6 +14,11 @@ class CustomObject:
         self.age = age
         self.is_student = is_student
 
+    def display(self):
+        print("Name:", self.name)
+        print("Age:", self.age)
+        print("Is Student:", True)
+
     def serialize(self, filename):
         """
          Serializes the current object to a binary file using pickle.
@@ -26,7 +31,6 @@ class CustomObject:
         except Exception:
             return None
 
-
     @classmethod
     def deserialize(cls, filename):
         """
@@ -37,7 +41,7 @@ class CustomObject:
         try:
             with open(filename, "rb") as file:
                 obj = pickle.load(file)
-            if isinstance(obj, cls):
-                return obj
+            if not isinstance(obj, cls):
+                return None
         except Exception:
             return None
