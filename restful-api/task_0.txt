@@ -1,0 +1,55 @@
+#### 1. Differences between HTTP and HTTPS
+
+- **Security**: HTTPS is much more secure than HTTP. HTTP does not encrypt data, while HTTPS uses TLS (Transport Layer Security), the modern version of SSL (Secure Sockets Layer), to encrypt communication.
+- **Privacy**: With HTTP, anyone can intercept and read the data. HTTPS prevents this by encrypting both the request and the response.
+- **Authentication**: HTTPS verifies the identity of the server using a certificate issued by a trusted Certificate Authority (CA).
+- **Usage**: Both are communication protocols between a client and a server, but HTTPS ensures confidentiality and integrity of the data.
+- **Recommendation**: HTTPS is strongly recommended, especially for websites handling sensitive information like passwords or payments.
+
+#### 2. HTTP Request and Response Structure – Example from YouTube
+
+To understand how HTTP communication works in practice, I inspected the network requests on YouTube's homepage.
+
+- I visited **https://www.youtube.com/** and opened Developer Tools by right-clicking and selecting **Inspect**.
+- I went to the **Network** tab, which was initially empty.
+- After reloading the page, many network requests appeared.
+- I clicked on the **first request**, which corresponds to the main page load.
+- Here are some key details from the request and response headers:
+
+**Request:**
+- URL: `https://www.youtube.com/`
+- Method: `GET`
+- Referrer Policy: `strict-origin-when-cross-origin`
+
+**Response:**
+- Status Code: `200 OK (from service worker)`
+- Headers include `Content-Type: text/html` and various caching policies.
+
+> I explored the full list of headers but only included the most relevant ones here for clarity.
+
+#### 3. HTTP Methods and Associated Status Codes
+
+Below is a list of common HTTP methods with typical status codes that indicate the outcome of each request.
+
+- **GET**: Retrieves data from the server.  
+  *Common status codes:*  
+  - `200 OK` (successfully retrieved data)  
+  - `404 Not Found` (requested resource does not exist)  
+  - `301 Moved Permanently` (resource moved to a new URL)
+
+- **POST**: Sends data to the server to create a new resource.  
+  *Common status codes:*  
+  - `201 Created` (resource successfully created)  
+  - `400 Bad Request` (invalid data sent)  
+  - `500 Internal Server Error` (server failure)
+
+- **PUT**: Updates or replaces an existing resource.  
+  *Common status codes:*  
+  - `200 OK` (resource updated successfully)  
+  - `204 No Content` (update successful, no content to return)  
+  - `400 Bad Request` (invalid update data)
+
+- **DELETE**: Deletes a resource from the server.  
+  *Common status codes:*  
+  - `200 OK` or `204 No Content` (resource deleted successfully)  
+  - `404 Not Found` (resource to delete not found)  
