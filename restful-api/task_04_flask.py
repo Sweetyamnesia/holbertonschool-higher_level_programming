@@ -16,8 +16,7 @@ def home():
 
 @app.route("/data")
 def data():
-    data = {"username": "john", "name": "John", "age": 30, "city": "New York"}
-    return jsonify(data)
+    return jsonify(list(users.keys()))
 
 
 @app.route("/status")
@@ -35,7 +34,7 @@ def get_user(username):
 
 @app.route("/add_user", methods=["POST"])
 def add_user():
-    ata = request.get_json()
+    data = request.get_json()
 
     if not data or "username" not in data:
         return jsonify({"error": "Username is required"}), 400
