@@ -1,0 +1,150 @@
+### Installation and Verification of curl
+
+I used Homebrew on macOS to install curl with the following command:  
+```bash
+brew install curl
+```
+
+After installation, I verified the installed version of curl by running:
+```bash
+curl --version
+```
+
+The output was as follows:
+```bash
+curl 8.7.1 (x86_64-apple-darwin24.0) libcurl/8.7.1 (SecureTransport) LibreSSL/3.3.6 zlib/1.2.12 nghttp2/1.64.0
+Release-Date: 2024-03-27
+Protocols: dict file ftp ftps gopher gophers http https imap imaps ipfs ipns ldap ldaps mqtt pop3 pop3s rtsp smb smbs smtp smtps telnet tftp
+Features: alt-svc AsynchDNS GSS-API HSTS HTTP2 HTTPS-proxy IPv6 Kerberos Largefile libz MultiSSL NTLM SPNEGO SSL threadsafe UnixSockets
+```
+
+### Using curl to Fetch a Webpage
+
+I used curl to fetch the content of a simple webpage by running:  
+```bash
+curl http://example.com
+````
+
+The output was the raw HTML content of the page, starting like this:
+```bash
+<!doctype html>
+<html>
+<head>
+    <title>Example Domain</title>
+
+    <meta charset="utf-8" />
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style type="text/css">
+    body {
+        background-color: #f0f0f2;
+        margin: 0;
+        padding: 0;
+        font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+        
+    }
+    div {
+        width: 600px;
+        margin: 5em auto;
+        padding: 2em;
+        background-color: #fdfdff;
+        border-radius: 0.5em;
+        box-shadow: 2px 3px 7px 2px rgba(0,0,0,0.02);
+    }
+    a:link, a:visited {
+        color: #38488f;
+        text-decoration: none;
+    }
+    @media (max-width: 700px) {
+        div {
+            margin: 0 auto;
+            width: auto;
+        }
+    }
+    </style>    
+</head>
+
+<body>
+<div>
+    <h1>Example Domain</h1>
+    <p>This domain is for use in illustrative examples in documents. You may use this
+    domain in literature without prior coordination or asking for permission.</p>
+    <p><a href="https://www.iana.org/domains/example">More information...</a></p>
+</div>
+</body>
+</html>
+```
+
+### Fetching Data from an API using curl
+
+I used curl to retrieve posts from JSONPlaceholder by running:  
+```bash
+curl https://jsonplaceholder.typicode.com/posts
+````
+
+The output was a JSON array containing multiple posts. Each post includes attributes such as userId, id, title, and body. Here is a shortened example of the output:
+```bash
+[
+  {
+    "userId": 1,
+    "id": 1,
+    "title": "sunt aut facere repellat provident occaecati excepturi optio reprehenderit",
+    "body": "quia et suscipit\nsuscipit..."
+  },
+  {
+    "userId": 1,
+    "id": 2,
+    "title": "qui est esse",
+    "body": "est rerum tempore vitae..."
+  },
+  ...
+]
+````
+
+### Using Headers and Other Options with curl :
+To fetch only the HTTP headers of the same request, I ran:
+```bash
+curl -I https://jsonplaceholder.typicode.com/posts
+````
+
+The response included status information and headers like:
+```bash
+HTTP/2 200 
+date: Mon, 09 Jun 2025 10:25:40 GMT
+content-type: application/json; charset=utf-8
+access-control-allow-credentials: true
+cache-control: max-age=43200
+etag: W/"6b80-Ybsq/K6GwwqrYkAsFxqDXGC7DoM"
+expires: -1
+nel: {"report_to":"heroku-nel","response_headers":["Via"],"max_age":3600,"success_fraction":0.01,"failure_fraction":0.1}
+pragma: no-cache
+report-to: {"group":"heroku-nel","endpoints":[{"url":"https://nel.heroku.com/reports?s=jU2mYoGnme88YYzp32%2Bmo8EG5WHmuWnl9guT1elULd8%3D\u0026sid=e11707d5-02a7-43ef-b45e-2cf4d2036f7d\u0026ts=1749245667"}],"max_age":3600}
+reporting-endpoints: heroku-nel="https://nel.heroku.com/reports?s=jU2mYoGnme88YYzp32%2Bmo8EG5WHmuWnl9guT1elULd8%3D&sid=e11707d5-02a7-43ef-b45e-2cf4d2036f7d&ts=1749245667"
+server: cloudflare
+vary: Origin, Accept-Encoding
+via: 2.0 heroku-router
+x-content-type-options: nosniff
+x-powered-by: Express
+x-ratelimit-limit: 1000
+x-ratelimit-remaining: 999
+x-ratelimit-reset: 1749245677
+age: 17149
+cf-cache-status: HIT
+cf-ray: 94cfed252f4d02cd-CDG
+alt-svc: h3=":443"; ma=86400
+````
+
+To send data to the API and create a new post, I used the POST method with curl:
+```bash
+curl -X POST -d "title=foo&body=bar&userId=1" https://jsonplaceholder.typicode.com/posts
+````
+
+The API responded with a JSON object confirming the creation of the post, typically including a new id (e.g., 101):
+```bash
+{
+  "title": "foo",
+  "body": "bar",
+  "userId": 1,
+  "id": 101
+}
+```
