@@ -6,7 +6,7 @@ from flask import request
 
 app = Flask(__name__)
 
-users = {}
+users = {"jane": {"name": "Jane", "age": 28, "city": "Los Angeles"}}
 
 
 @app.route("/")
