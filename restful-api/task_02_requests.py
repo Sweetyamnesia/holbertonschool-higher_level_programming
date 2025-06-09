@@ -5,7 +5,11 @@ import csv
 
 def fetch_and_print_posts():
     response = requests.get("https://jsonplaceholder.typicode.com/posts", data={"key": "value"})
-    print(response.status_code == 200)
+    if response.status_code == 200:
+        data = response.json()
+        for post in data:
+            print(post["title"])
+
 
 def fetch_and_save_posts():
     fields = ["id", "title", "body"]
