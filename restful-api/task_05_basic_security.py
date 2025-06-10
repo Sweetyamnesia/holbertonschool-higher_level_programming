@@ -18,30 +18,22 @@ users = {
     "Lydia": {"password": generate_password_hash("password"), "role": "user"},
 }
 
-tokens = {
-    "secret-token-1": "John",
-    "secret-token-2": "Suzan",
-    "secret-token-3": "Peter",
-    "secret-token-4": "Lydia"
-}
-
 
 @app.route("/basic-protected", methods=["GET"])
 @auth.login_required
 def verify_password(username, password):
     if (username in users and
             check_password_hash(users.get(username)["password"], password)):
-        return "Basic Auth: Access Granted"
+        return users
     else:
         return 401
 
 
 @app.route("/login", methods=["POST"])
-@jwt_required()
 def login():
     username = request.json.get("username", None)
     password = request.json.get("password", None)
-    if username != "test" or password != "test":
+    if username != users or password != password:
         return jsonify({"msg": "Bad username or password"}), 401
 
     access_token = create_access_token(identity=username)
@@ -49,16 +41,16 @@ def login():
 
 
 @app.route("/jwt-protected")
+@jwt_required()
 def protected():
     return "JWT Auth: Access Granted"
 
 
 @app.route("/admin-only")
+@jwt_required()
 def admin():
+    get_jwt_identity()
     return "Admin Access: Granted"
-
-
-get_jwt_identity()
 
 
 if __name__ == '__main__':
