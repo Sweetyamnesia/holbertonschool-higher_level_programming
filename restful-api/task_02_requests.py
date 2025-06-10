@@ -1,6 +1,5 @@
 #!/usr/bin/python3
 import requests
-import json
 import csv
 
 
@@ -9,7 +8,7 @@ def fetch_and_print_posts():
     if response.status_code == 200:
         data = response.json()
         for post in data:
-            print(post["title"])
+            print(post.get("title"))
 
 
 def fetch_and_save_posts():
@@ -26,3 +25,8 @@ def fetch_and_save_posts():
                     "title": post["title"],
                     "body": post["body"]
                 })
+
+
+if __name__ == "__main__":
+    fetch_and_print_posts()
+    fetch_and_save_posts()
