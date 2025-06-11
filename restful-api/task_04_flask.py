@@ -62,6 +62,7 @@ def add_user():
 
     """Add the new user to the users dictionary"""
     users[username] = {
+        "username": username,
         "name": data["name"],
         "age": data["age"],
         "city": data["city"]
