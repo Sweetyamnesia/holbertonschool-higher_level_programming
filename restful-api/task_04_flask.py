@@ -7,7 +7,8 @@ from flask import request
 app = Flask(__name__)
 
 """A simple in-memory data store with one predefined user"""
-users = {"jane": {"name": "Jane", "age": 28, "city": "Los Angeles"}}
+users = {"jane": {"name": "Jane", "age": 28, "city": "Los Angeles"},
+         "john": {"name": "John", "age": 30, "city": "New-York"}}
 
 """Root route that returns a welcome message"""
 
@@ -41,7 +42,7 @@ def get_user(username):
     """Check if the user exists in the dictionary"""
     if username in users:
         user_data = users[username].copy()
-        user_data["username"] = username  
+        user_data["username"] = username
         return jsonify(user_data)
     else:
         """Return an error if the user is not found"""
@@ -57,7 +58,7 @@ def add_user():
     data = request.get_json()
 
     """Validate that the required field 'username' exists"""
-    if not data or "username" not in data:
+    if not data or "username" not in data or not data["username"]:
         return jsonify({"error": "Username is required"}), 400
 
     username = data["username"]
