@@ -40,7 +40,9 @@ def status():
 def get_user(username):
     """Check if the user exists in the dictionary"""
     if username in users:
-        return jsonify(users[username])
+        user_data = users[username].copy()
+        user_data["username"] = username  
+        return jsonify(user_data)
     else:
         """Return an error if the user is not found"""
         return jsonify({"error": "User not found"}), 404
