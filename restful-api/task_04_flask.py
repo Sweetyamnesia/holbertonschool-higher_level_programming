@@ -1,68 +1,54 @@
 #!/usr/bin/python3
-from flask import Flask
-from flask import jsonify
-from flask import request
+from flask import Flask, jsonify, request
 
 """Initialize the Flask application"""
 app = Flask(__name__)
 
-"""A simple in-memory data store with one predefined user"""
+"""A simple in-memory data store"""
 users = {}
 
 """Root route that returns a welcome message"""
-
-
 @app.route("/")
 def home():
     return "Welcome to the Flask API!"
 
-
 """Route to return a list of usernames"""
-
-
 @app.route("/data")
 def data():
     return jsonify(list(users.keys()))
 
-
 """Route to return the API status"""
-
-
 @app.route("/status")
 def status():
     return jsonify({"status": "OK"})
 
-
 """Route to get user details by username"""
-
-
 @app.route("/users/<username>")
 def get_user(username):
-    """Check if the user exists in the dictionary"""
     if username in users:
         user_data = users[username].copy()
         user_data["username"] = username
         return jsonify(user_data)
     else:
-        """Return an error if the user is not found"""
         return jsonify({"error": "User not found"}), 404
 
-
 """Route to add a new user via POST request"""
-
-
 @app.route("/add_user", methods=["POST"])
 def add_user():
-    """Get the JSON data sent in the request body"""
     data = request.get_json()
 
-    """Validate that the required field 'username' exists"""
-    if not data or "username" not in data or not data["username"]:
-        return jsonify({"error": "Username is required"}), 400
+    """Validate required fields"""
+    required_fields = ["username", "name", "age", "city"]
+    for field in required_fields:
+        if field not in data or not data[field]:
+            return jsonify({"error": f"{field} is required"}), 400
 
     username = data["username"]
 
-    """Add the new user to the users dictionary"""
+    """Check for duplicate usernames"""
+    if username in users:
+        return jsonify({"error": "Username already exists"}), 409
+
     users[username] = {
         "username": username,
         "name": data["name"],
@@ -70,12 +56,10 @@ def add_user():
         "city": data["city"]
     }
 
-    """Return a confirmation response"""
     return jsonify({
         "message": "User added",
         "user": users[username]
     }), 201
-
 
 """Run the Flask application if this file is executed directly"""
 if __name__ == "__main__":
