@@ -12,10 +12,30 @@ app.config["JWT_SECRET_KEY"] = "super-secret"
 jwt = JWTManager(app)
 
 users = {
-    "John": {"password": generate_password_hash("password"), "role": "user"},
-    "Suzan": {"password": generate_password_hash("password"), "role": "admin"},
-    "Peter": {"password": generate_password_hash("password"), "role": "admin"},
-    "Lydia": {"password": generate_password_hash("password"), "role": "user"},
+    "John": {
+        "password": generate_password_hash(
+            "password", method="pbkdf2:sha256"
+        ),
+        "role": "user",
+    },
+    "Suzan": {
+        "password": generate_password_hash(
+            "password", method="pbkdf2:sha256"
+        ),
+        "role": "admin",
+    },
+    "Peter": {
+        "password": generate_password_hash(
+            "password", method="pbkdf2:sha256"
+        ),
+        "role": "admin",
+    },
+    "Lydia": {
+        "password": generate_password_hash(
+            "password", method="pbkdf2:sha256"
+        ),
+        "role": "user",
+    },
 }
 
 
