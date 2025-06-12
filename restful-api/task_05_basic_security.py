@@ -17,22 +17,25 @@ app.config["JWT_SECRET_KEY"] = "super-secret"
 jwt = JWTManager(app)
 
 
-# Custom handler for missing or invalid JWT token
 @jwt.unauthorized_loader
-def unauthorized_callback(callback):
-    return jsonify({"error": "Missing or invalid JWT token"}), 401
+def handle_unauthorized_error(err):
+    return jsonify({"error": "Missing or invalid token"}), 401
 
-
-# Custom handler for invalid JWT tokens
 @jwt.invalid_token_loader
-def invalid_token_callback(callback):
+def handle_invalid_token_error(err):
     return jsonify({"error": "Invalid token"}), 401
 
-
-# Custom handler for expired JWT tokens
 @jwt.expired_token_loader
-def expired_token_callback(callback, payload):
+def handle_expired_token_error(err):
     return jsonify({"error": "Token has expired"}), 401
+
+@jwt.revoked_token_loader
+def handle_revoked_token_error(err):
+    return jsonify({"error": "Token has been revoked"}), 401
+
+@jwt.needs_fresh_token_loader
+def handle_needs_fresh_token_error(err):
+    return jsonify({"error": "Fresh token required"}), 401
 
 
 # In-memory user data store with hashed passwords and roles
