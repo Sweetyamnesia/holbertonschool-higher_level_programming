@@ -55,8 +55,8 @@ def basic_protected():
 
 @app.route("/login", methods=["POST"])
 def login():
-    username = request.json.get("username")
-    password = request.json.get("password")
+    username = request.get_json("username")
+    password = request.get_json("password")
     user = users.get(username)
     if not user or not check_password_hash(user["password"], password):
         return jsonify({"error": "Bad username or password"}), 401
