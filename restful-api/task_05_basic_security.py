@@ -22,8 +22,9 @@ users = {
 @auth.verify_password
 def verify_password(username, password):
     user = users.get(username)
-    if not user or not check_password_hash(user["password"], password):
-        return jsonify({"error": "Bad username or password"}), 401
+    if user and check_password_hash(user["password"], password):
+        return username
+    return None
 
 
 @app.route("/basic-protected", methods=["GET"])
@@ -36,11 +37,12 @@ def basic_protected():
 def login():
     username = request.json.get("username")
     password = request.json.get("password")
-    if users and check_password_hash(users["password"], password):
-        return jsonify({"Bad username or password"}), 401
+    user = users.get(username)
+    if not user or not check_password_hash(user["password"], password):
+        return jsonify({"error": "Bad username or password"}), 401
 
     access_token = create_access_token(identity={"username": username,
-                                                 "role": users["role"]})
+                                                 "role": user["role"]})
     return jsonify(access_token=access_token)
 
 
