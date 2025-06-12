@@ -7,8 +7,7 @@ from flask import request
 app = Flask(__name__)
 
 """A simple in-memory data store with one predefined user"""
-users = {"jane": {"name": "Jane", "age": 28, "city": "Los Angeles"},
-         "john": {"name": "John", "age": 30, "city": "New-York"}}
+users = {}
 
 """Root route that returns a welcome message"""
 
