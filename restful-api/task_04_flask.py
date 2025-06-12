@@ -24,7 +24,7 @@ def data():
 # Route to return the API status
 @app.route("/status")
 def status():
-    return "OK"
+    return "OK", 200
 
 
 # Route to get user details by username
@@ -42,24 +42,16 @@ def get_user(username):
 def add_user():
     data = request.get_json()
 
-    """Validate required fields"""
-    required_fields = ["username", "name", "age", "city"]
-    for field in required_fields:
-        if field not in data or not data[field]:
-            return jsonify({"error": f"{field} is required"}), 400
+    # Validate required field username
+    if not data or "username" not in data:
+        return jsonify({"error": "Username is required"}), 400
 
     username = data["username"]
+    users[username] = data
 
-    """Check for duplicate usernames"""
+    # Check for duplicate usernames
     if username in users:
         return jsonify({"error": "Username already exists"}), 409
-
-    users[username] = {
-        "username": username,
-        "name": data["name"],
-        "age": data["age"],
-        "city": data["city"]
-    }
 
     return jsonify({
         "message": "User added",
