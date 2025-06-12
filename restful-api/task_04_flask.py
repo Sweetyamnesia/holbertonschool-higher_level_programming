@@ -49,10 +49,6 @@ def add_user():
     username = data["username"]
     users[username] = data
 
-    # Check for duplicate usernames
-    if username in users:
-        return jsonify({"error": "Username already exists"}), 409
-
     return jsonify({
         "message": "User added",
         "user": users[username]
