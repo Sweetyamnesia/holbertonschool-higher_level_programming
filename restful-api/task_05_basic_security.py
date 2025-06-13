@@ -43,6 +43,17 @@ def handle_needs_fresh_token_error(jwt_header, jwt_payload):
     return jsonify({"error": "Fresh token required"}), 401
 
 
+{
+   "alg": "HS256",
+   "typ": "JWT"
+}
+
+{
+   "sub": "1234567890",
+   "name": "John Doe",
+   "isAdmin": False
+}
+
 # In-memory user data store with hashed passwords and roles
 users = {
     "John": {
