@@ -42,13 +42,12 @@ def handle_revoked_token_error(jwt_header, jwt_payload):
 def handle_needs_fresh_token_error(jwt_header, jwt_payload):
     return jsonify({"error": "Fresh token required"}), 401
 
-
-{
+header = {
    "alg": "HS256",
    "typ": "JWT"
 }
 
-{
+payload = {
    "sub": "1234567890",
    "name": "John Doe",
    "isAdmin": False
