@@ -2,4 +2,4 @@
 SELECT COLUMN_NAME, DATA_TYPE, CHARACTER_MAXIMUM_LENGTH, IS_NULLABLE
 FROM information_schema.columns
 WHERE table_schema = 'hbtn_0c_0'
-AND table_name = 'first_table'
+AND table_name = 'first_table';
