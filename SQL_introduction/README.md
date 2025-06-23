@@ -30,46 +30,53 @@ DML (Data Manipulation Language) : Utilisé pour manipuler les données (ex. : S
 🏗️ Comment créer ou modifier une table
 
 Créer une table
-
+```sql
 CREATE TABLE utilisateurs (
   id INT AUTO_INCREMENT PRIMARY KEY,
   nom VARCHAR(100),
   email VARCHAR(100)
 );
+```
 
 Modifier une table
-
+```sql
 ALTER TABLE utilisateurs ADD COLUMN age INT;
+```
 
 🔍 Comment sélectionner des données depuis une table
-
+```sql
 SELECT * FROM utilisateurs;
 SELECT nom, email FROM utilisateurs WHERE age > 18;
+```
 
 ✍️ Comment insérer, mettre à jour ou supprimer des données
 
 Insérer
-
+```sql
 INSERT INTO utilisateurs (nom, email, age)
 VALUES ('Alice', 'alice@example.com', 25);
+```
 
 Mettre à jour
-
+```sql
 UPDATE utilisateurs SET age = 26 WHERE nom = 'Alice';
+```
 
 Supprimer
-
+```sql
 DELETE FROM utilisateurs WHERE nom = 'Alice';
+```
 
 🔄 Que sont les sous-requêtes (subqueries) ?
 
 Une sous-requête est une requête imbriquée dans une autre requête SQL. Elle est souvent utilisée dans les clauses WHERE, FROM ou SELECT.
-
+```sql
 SELECT nom FROM utilisateurs
 WHERE id IN (SELECT id_utilisateur FROM commandes WHERE total > 100);
+```
 
 🧮 Comment utiliser les fonctions MySQL
-
+```sql
 Fonctions courantes :
 COUNT(), SUM(), AVG() : calculs
 NOW(), CURDATE() : dates
@@ -78,4 +85,4 @@ UPPER(), LOWER() : chaînes de caractères
 SELECT COUNT(*) FROM utilisateurs;
 SELECT UPPER(nom) FROM utilisateurs;
 SELECT AVG(age) FROM utilisateurs WHERE age IS NOT NULL;
-
+```
