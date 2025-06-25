@@ -1,8 +1,7 @@
 #!/usr/bin/python3
 """
-This script lists all states from the database hbtn_0e_4_usa.
-It takes 4 arguments: mysql username, mysql password
-database name and state name.
+This script lists all cities of a given state from the database hbtn_0e_4_usa.
+It takes 4 arguments: MySQL username, MySQL password, database name, and state name.
 Results are sorted by cities.id in ascending order.
 """
 
