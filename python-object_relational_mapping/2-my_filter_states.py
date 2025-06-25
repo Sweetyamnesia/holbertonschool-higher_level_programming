@@ -23,6 +23,9 @@ if __name__ == "__main__":
     )
     cur = db.cursor()
     state = sys.argv[4]
+    """
+    Use %s to securely pass the variable to the query
+    """
     query = "SELECT * FROM states WHERE name = %s ORDER BY id ASC"
     cur.execute(query, (state,))
     rows = cur.fetchall()
