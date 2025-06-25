@@ -1,13 +1,18 @@
 #!/usr/bin/python3
-# Import MySQLdb module to connect to a MySQL database
-import MySQLdb
+"""
+This script lists all states from the database hbtn_0e_0_usa.
+It takes 3 arguments: mysql username, mysql password and database name.
+Results are sorted by states.id in ascending order.
+"""
 
-# Import sys module to get command-line arguments
+import MySQLdb
 import sys
 
-# Execute only if the script is run directly (not imported)
 if __name__ == "__main__":
-    # Connect to the MySQL database using arguments:
+    """
+    Connects to the MySQL database and retrieves all states sorted by id.
+    Prints each state as a tuple.
+    """
     db = MySQLdb.connect(
         host="localhost",
         port=3306,
@@ -15,8 +20,6 @@ if __name__ == "__main__":
         passwd=sys.argv[2],
         db=sys.argv[3]
     )
-
-    # Create a cursor object to execute SQL queries
     cur = db.cursor()
     cur.execute("SELECT * FROM states ORDER BY id ASC")
     rows = cur.fetchall()
