@@ -26,8 +26,8 @@ if __name__ == "__main__":
     """
     Use %s to securely pass the variable to the query
     """
-    query = "SELECT * FROM states WHERE name = %s ORDER BY id ASC"
-    cur.execute(query, (state,))
+    query = "SELECT * FROM states WHERE name = %s ORDER BY id ASC".format(state)
+    cur.execute(query)
     rows = cur.fetchall()
     for row in rows:
         print(row)
