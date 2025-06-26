@@ -1,5 +1,4 @@
 #!/usr/bin/python3
-#!/usr/bin/python3
 """
 This script lists all states from the database hbtn_0e_6_usa.
 It takes 3 arguments: MySQL username, MySQL password, and database name
