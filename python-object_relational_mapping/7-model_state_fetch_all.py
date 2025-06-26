@@ -28,6 +28,7 @@ if __name__ == "__main__":
     query = "SELECT * FROM states ORDER BY states.id ASC"
     cur.execute(query)
     rows = cur.fetchall()
-    print(rows)
+    for row in rows:
+        print(f"{row[0]}: {row[1]}")
     cur.close()
     db.close()
