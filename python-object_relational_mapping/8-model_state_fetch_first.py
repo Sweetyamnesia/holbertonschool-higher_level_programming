@@ -27,8 +27,8 @@ if __name__ == "__main__":
     cur = db.cursor()
     query = "SELECT states.id, states.name FROM states WHERE states.id = 1 ORDER BY states.id ASC"
     cur.execute(query)
-    rows = cur.fetchall()
+    rows = cur.fetchone()
     for row in rows:
-        print(f"{row[0]}: {row[1]}")
+        print(row)
     cur.close()
     db.close()
