@@ -25,4 +25,4 @@ first_state = session.query(State).order_by(State.id).first()
 if first_state:
     print(f"{first_state.id}: {first_state.name}")
 else:
-    print("Nothing", end="\n")
+    print("Nothing")
