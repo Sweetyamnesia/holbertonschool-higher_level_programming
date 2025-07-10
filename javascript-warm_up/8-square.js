@@ -1,5 +1,5 @@
 #!/usr/bin/node
-const size = parseInt(process.argv[2], [10]);
+const size = parseInt(process.argv[2], 10);
 let i = 0;
 
 if (isNaN(size)) {
