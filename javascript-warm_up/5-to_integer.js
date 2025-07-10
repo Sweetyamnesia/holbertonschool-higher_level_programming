@@ -1,6 +1,6 @@
-#!/usr/bin/env node
+#!/usr/bin/node
 const args = process.argv;
-const firstArg = args[0];
+const firstArg = args[2];
 const num = parseInt(firstArg, 10);
 
 if (!isNaN(num)){
