@@ -1,4 +1,4 @@
-#!/usr/bin/env node
+#!/usr/bin/node
 const { args } = require('node:process');
 
 if (process.args < 3) {
