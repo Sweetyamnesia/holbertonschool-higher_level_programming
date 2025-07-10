@@ -4,7 +4,7 @@ function add(a, b){
 	return a + b;
 }
 
-const num1 = parseInt(args[2]);
-const num2 = parseInt(args[3]);
+const num1 = parseInt(args[2], [10]);
+const num2 = parseInt(args[3], [10]);
 
-console.log(num1 + n);
+console.log(num1 + num2);
