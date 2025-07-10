@@ -1,5 +1,5 @@
-#!/usr/bin/env node
-const args = process.argv;
+#!/usr/bin/node
+const { args } = require('node:process');
 
 if (args === 0) {
   console.log("No argument");
