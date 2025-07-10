@@ -1,8 +1,7 @@
-#!/usr/bin/node
-const { args } = require('node:process');
+#!/usr/bin/env node
+const args = process.argv.slice(2);
 
-
-if (args === 0) {
+if (args.length === 0) {
   console.log("No argument");
 } else if (args === 1) {
   console.log("Argument found");
