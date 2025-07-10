@@ -1,13 +1,14 @@
-#!/usr/bin/node
+#!/usr/bin/env node
 const messages = [
-  "C is fun",
-  "Python is cool",
-  "JavaScript is amazing"
+  'C is fun',
+  'Python is cool',
+  'JavaScript is amazing'
 ];
 
-let sentences = "";
+const result = [];
+
 for (let i = 0; i < messages.length; i++) {
-  sentences += messages[i] + "\n";
+  result.push(messages[i]);
 }
 
-console.log(sentences);
+console.log(result.join('\n'));
