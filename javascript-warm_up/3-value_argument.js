@@ -1,8 +1,8 @@
 #!/usr/bin/env node
-const args = require('node:process');
+const { args } = require('node:process');
 
-if (args === 0) {
+if (process.args < 3) {
   console.log("No argument");
 } else {
-  console.log(args);
+  console.log(process.argv);
 }
