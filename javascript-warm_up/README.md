@@ -129,5 +129,6 @@ Comment importer un fichier JavaScript
 
 En HTML avec la balise <script src="fichier.js"></script>.
 En Node.js avec require() ou, en module ES6, avec import :
-
+```javascript
 import { maFonction } from './monModule.js';
+```
