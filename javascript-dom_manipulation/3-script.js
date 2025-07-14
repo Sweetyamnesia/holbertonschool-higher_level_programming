@@ -2,9 +2,11 @@
 const header = document.getElementById("toggle_header");
 header.addEventListener("click", function() {
 	const red = document.getElementById("red")
-	if (document.getElementById("red")) {
-		document.getElementById("red") = "green"
+	if (header.classList.contains("red")) {
+		header.classList.remove("red");
+		header.classList.add("green");
 	} else {
-		document.getElementById("red") = "red"
+		header.classList.remove("green");
+		header.classList.add("red");
 	}
 });
