@@ -6,7 +6,7 @@
 	<title>Items list</title>
 </head>
 <body>
-	{% if data.items %}
+	{% if not data.items %}
 		<p>No items found</p>
     {% else %}
 		<ul>
