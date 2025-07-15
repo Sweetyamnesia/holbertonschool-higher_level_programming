@@ -8,12 +8,12 @@
 <body>
 	{% if data.items %}
 		<p>No items found</p>
-        {% else %}
-			<ul>
-				{% for item in data.items %}
-					<li>{{ item }}</li>
-				{% endfor %}
-			</ul>
+    {% else %}
+		<ul>
+			{% for item in data.items %}
+				<li>{{ item }}</li>
+			{% endfor %}
+		</ul>
     {% endif %}
 </body>
 </html>
