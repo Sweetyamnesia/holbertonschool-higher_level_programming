@@ -23,14 +23,12 @@ def items():
         data = json.load(file)
     return render_template('items.html', items=items)
 
-@app.route('/flask')
-def source():
-    source = request.args.get('source')
-    id = request.args.get('id')
-    with open("data.csv", "w", newline="") as fichier_csv:
-        data
-    with open("data.json", "r") as fichier:
-    	data = json.load(fichier)
+@app.route('/source')
+def products():
+    query = request.args.get('query')
+    with open('products.json') as f:
+        data = json.load(f)
+    return render_template('product_display.html', products=data["products"], query=query)
 
 
 if __name__ == '__main__':
