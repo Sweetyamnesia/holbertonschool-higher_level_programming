@@ -18,9 +18,10 @@ def contact():
 
 @app.route('/items')
 def items():
-    return render_template('/templates/items.html')
-with open('items.json', 'r') as file:
-    data = json.load(file)
+    with open('items.json', 'r') as file:
+        data = json.load(file)
+    return render_template('items.html', data=data)
+
 
 if __name__ == '__main__':
     app.run(debug=True, port=5000)
