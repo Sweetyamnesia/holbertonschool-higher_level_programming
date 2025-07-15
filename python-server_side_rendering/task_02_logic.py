@@ -20,7 +20,7 @@ def contact():
 def items():
     with open('items.json', 'r') as file:
         data = json.load(file)
-    return render_template('items.html', data=data)
+    return render_template('items.html', data["items"])
 
 
 if __name__ == '__main__':
