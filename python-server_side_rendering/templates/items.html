@@ -6,14 +6,14 @@
 	<title>Items list</title>
 </head>
 <body>
-	{% if(not list) %}
+	{% if(not items) %}
 		<p>No items found</p>
         {% else %}
 			<ul>
 				{% for item in items %}
-					<li>{% {items} %}</li>
+					<li>{{items}}</li>
 				{% endfor %}
 			</ul>
-    	{% endif %}
+    {% endif %}
 </body>
 </html>
