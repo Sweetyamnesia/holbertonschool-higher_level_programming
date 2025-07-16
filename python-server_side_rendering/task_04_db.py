@@ -31,50 +31,60 @@ def read_csv_data():
     with open("products.csv", newline='') as f:
         return list(csv.DictReader(f))
 
-def create_database():
+import sqlite3
+
+def setup_database():
     conn = sqlite3.connect('products.db')
     cursor = conn.cursor()
+
+    # Création de la table avec la structure demandée
     cursor.execute('''
         CREATE TABLE IF NOT EXISTS Products (
             id INTEGER PRIMARY KEY,
             name TEXT NOT NULL,
-            category TEXT NOT NULL,
-            price REAL NOT NULL
+            price REAL NOT NULL,
+            category TEXT NOT NULL
         )
     ''')
+
+    # Insertion des données exemples, évite doublons grâce à OR IGNORE
     cursor.execute('''
-        INSERT OR IGNORE INTO Products (id, name, category, price)
+        INSERT OR IGNORE INTO Products (id, name, price, category)
         VALUES
-        (1, 'Laptop', 'Electronics', 799.99),
-        (2, 'Coffee Mug', 'Home Goods', 15.99)
+        (1, 'Laptop', 799.99, 'Electronics'),
+        (2, 'Coffee Mug', 15.99, 'Home Goods')
     ''')
+
     conn.commit()
     conn.close()
 
-def read_sql_data():
-    try:
-        create_database()
+def read_products():
+    conn = sqlite3.connect('products.db')
+    cursor = conn.cursor()
 
-        conn = sqlite3.connect('products.db')
-        cursor = conn.cursor()
-        cursor.execute('SELECT * FROM Products')
+    cursor.execute("SELECT * FROM Products")
+    rows = cursor.fetchall()
 
-        rows = cursor.fetchall()
+    conn.close()
 
-        products = []
-        for row in rows:
-            products.append({
-                "id": row[0],
-                "name": row[1],
-                "category": row[2],
-                "price": row[3]
-            })
+    products = []
+    for row in rows:
+        products.append({
+            "id": row[0],
+            "name": row[1],
+            "price": row[2],
+            "category": row[3]
+        })
 
-        conn.close()
-        return products
-    except Exception as e:
-        print(f"Erreur : {e}")
-        return None
+    return products
+
+# On lance la création / insertion
+setup_database()
+
+# Puis on récupère et affiche les données
+products = read_products()
+print(products)
+
 
 @app.route('/source')
 def products():
@@ -86,7 +96,7 @@ def products():
     elif source == "csv":
         products = read_csv_data()
     elif source == "sql":
-        products = read_sql_data()
+        products = read_products()
         if products is None:
             return render_template("product_display.html", error="Database error")
     else:
