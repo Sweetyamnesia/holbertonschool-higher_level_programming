@@ -31,14 +31,36 @@ def read_csv_data():
     with open("products.csv", newline='') as f:
         return list(csv.DictReader(f))
 
+def create_database():
+    conn = sqlite3.connect('products.db')
+    cursor = conn.cursor()
+    cursor.execute('''
+        CREATE TABLE IF NOT EXISTS Products (
+            id INTEGER PRIMARY KEY,
+            name TEXT NOT NULL,
+            category TEXT NOT NULL,
+            price REAL NOT NULL
+        )
+    ''')
+    cursor.execute('''
+        INSERT OR IGNORE INTO Products (id, name, category, price)
+        VALUES
+        (1, 'Laptop', 'Electronics', 799.99),
+        (2, 'Coffee Mug', 'Home Goods', 15.99)
+    ''')
+    conn.commit()
+    conn.close()
+
 def read_sql_data():
     try:
-        connexion = sqlite3.connect('products.db')
-        cursor = connexion.cursor()
-        
-        cursor.execute("SELECT id, name, category, price FROM Products")
+        create_database()
+
+        conn = sqlite3.connect('products.db')
+        cursor = conn.cursor()
+        cursor.execute('SELECT * FROM Products')
+
         rows = cursor.fetchall()
-        
+
         products = []
         for row in rows:
             products.append({
@@ -48,9 +70,10 @@ def read_sql_data():
                 "price": row[3]
             })
 
-        connexion.close()
+        conn.close()
         return products
     except Exception as e:
+        print(f"Erreur : {e}")
         return None
 
 @app.route('/source')
