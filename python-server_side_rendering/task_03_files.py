@@ -42,6 +42,12 @@ def products():
         products = read_csv_data()
     else:
         return render_template("product_display.html", products=products)
+    
+    if id:
+       for p in products:
+           if not filter:
+               return render_template("product_display.html", products=filter)
+    return render_template("product_display.html", products=products)
 
 if __name__ == '__main__':
     app.run(debug=True, port=5000)
