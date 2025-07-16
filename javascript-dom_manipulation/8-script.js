@@ -1,4 +1,3 @@
-#!/usr/bin/node
 fetch("https://hellosalut.stefanbohacek.dev/?lang=fr")
   .then(response => response.json())
   .then(data => {
