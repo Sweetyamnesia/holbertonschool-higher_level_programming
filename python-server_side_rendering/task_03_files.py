@@ -21,7 +21,7 @@ def items():
     json_path = os.path.join(os.path.dirname(__file__), 'items.json')
     with open(json_path, 'r') as file:
         data = json.load(file)
-    return render_template('items.html', items=items)
+    return render_template('items.html', items=data["items"])
 
 def read_json_data():
     with open('products.json') as f:
@@ -39,9 +39,9 @@ def products():
     if source == "json":
         products = read_json_data()
     elif source == "csv":
-        products == read_csv_data()
+        products = read_csv_data()
     else:
-        return render_template("product_display.html")
+        return render_template("product_display.html", products=products)
 
 if __name__ == '__main__':
     app.run(debug=True, port=5000)
