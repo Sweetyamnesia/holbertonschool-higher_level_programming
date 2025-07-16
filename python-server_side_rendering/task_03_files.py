@@ -23,13 +23,25 @@ def items():
         data = json.load(file)
     return render_template('items.html', items=items)
 
+def read_json_data():
+    with open('products.json') as f:
+        return json.load(f)["products"]
+
+def read_csv_data():
+    with open("products.csv", newline='') as f:
+        return list(csv.DictReader(f))
+
 @app.route('/source')
 def products():
-    query = request.args.get('query')
-    with open('products.json') as f:
-        data = json.load(f)
-    return render_template('product_display.html', products=data["products"], query=query)
-
+    source = request.args.get('source')
+    id = request.args.get('id')
+    
+    if source == "json":
+        products = read_json_data()
+    elif source == "csv":
+        products == read_csv_data()
+    else:
+        return render_template("product_display.html")
 
 if __name__ == '__main__':
     app.run(debug=True, port=5000)
