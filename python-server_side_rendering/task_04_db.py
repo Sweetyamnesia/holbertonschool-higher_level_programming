@@ -4,6 +4,55 @@ import json, csv, os, sqlite3
 
 app = Flask(__name__)
 
+# --- Fonctions lecture données ---
+
+def read_json_data():
+    with open('products.json') as f:
+        return json.load(f)["products"]
+
+def read_csv_data():
+    with open("products.csv", newline='') as f:
+        return list(csv.DictReader(f))
+
+def setup_database():
+    conn = sqlite3.connect('products.db')
+    cursor = conn.cursor()
+    cursor.execute('''
+        CREATE TABLE IF NOT EXISTS Products (
+            id INTEGER PRIMARY KEY,
+            name TEXT NOT NULL,
+            price REAL NOT NULL,
+            category TEXT NOT NULL
+        )
+    ''')
+    cursor.execute('''
+        INSERT OR IGNORE INTO Products (id, name, price, category)
+        VALUES
+        (1, 'Laptop', 799.99, 'Electronics'),
+        (2, 'Coffee Mug', 15.99, 'Home Goods')
+    ''')
+    conn.commit()
+    conn.close()
+
+def read_products():
+    conn = sqlite3.connect('products.db')
+    cursor = conn.cursor()
+    cursor.execute("SELECT * FROM Products")
+    rows = cursor.fetchall()
+    conn.close()
+
+    products = []
+    for row in rows:
+        products.append({
+            "id": row[0],
+            "name": row[1],
+            "price": row[2],
+            "category": row[3]
+        })
+    return products
+
+# --- Routes statiques ---
+
 @app.route('/')
 def home():
     return render_template('index.html')
@@ -23,68 +72,7 @@ def items():
         data = json.load(file)
     return render_template('items.html', items=data["items"])
 
-def read_json_data():
-    with open('products.json') as f:
-        return json.load(f)["products"]
-
-def read_csv_data():
-    with open("products.csv", newline='') as f:
-        return list(csv.DictReader(f))
-
-import sqlite3
-
-def setup_database():
-    conn = sqlite3.connect('products.db')
-    cursor = conn.cursor()
-
-    # Création de la table avec la structure demandée
-    cursor.execute('''
-        CREATE TABLE IF NOT EXISTS Products (
-            id INTEGER PRIMARY KEY,
-            name TEXT NOT NULL,
-            price REAL NOT NULL,
-            category TEXT NOT NULL
-        )
-    ''')
-
-    # Insertion des données exemples, évite doublons grâce à OR IGNORE
-    cursor.execute('''
-        INSERT OR IGNORE INTO Products (id, name, price, category)
-        VALUES
-        (1, 'Laptop', 799.99, 'Electronics'),
-        (2, 'Coffee Mug', 15.99, 'Home Goods')
-    ''')
-
-    conn.commit()
-    conn.close()
-
-def read_products():
-    conn = sqlite3.connect('products.db')
-    cursor = conn.cursor()
-
-    cursor.execute("SELECT * FROM Products")
-    rows = cursor.fetchall()
-
-    conn.close()
-
-    products = []
-    for row in rows:
-        products.append({
-            "id": row[0],
-            "name": row[1],
-            "price": row[2],
-            "category": row[3]
-        })
-
-    return products
-
-# On lance la création / insertion
-setup_database()
-
-# Puis on récupère et affiche les données
-products = read_products()
-print(products)
-
+# --- Route principale produits selon source ---
 
 @app.route('/source')
 def products():
@@ -97,12 +85,10 @@ def products():
         products = read_csv_data()
     elif source == "sql":
         products = read_products()
-        if products is None:
-            return render_template("product_display.html", error="Database error")
     else:
         return render_template("product_display.html", error="Wrong source")
 
-    # Si id est fourni, on filtre
+    # Filtrage sur id si demandé
     if prod_id:
         filtered = [p for p in products if str(p["id"]) == prod_id]
         if not filtered:
@@ -110,3 +96,9 @@ def products():
         return render_template("product_display.html", products=filtered)
 
     return render_template("product_display.html", products=products)
+
+# --- Lancement du serveur ---
+
+if __name__ == '__main__':
+    setup_database()  # Création base SQLite au lancement uniquement
+    app.run(debug=True)
