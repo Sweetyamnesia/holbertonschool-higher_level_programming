@@ -19,9 +19,13 @@ def contact():
 @app.route('/items')
 def items():
     json_path = os.path.join(os.path.dirname(__file__), 'items.json')
-    with open(json_path, 'r') as file:
-        data = json.load(file)
-    return render_template('items.html', items=data["items"])
+    try:
+        with open(json_path, 'r') as file:
+            data = json.load(file)
+        return render_template('items.html', items=data["items"])
+    except FileNotFoundError:
+        return render_template('items.html', items=[], error="Fichier items.json introuvable.")
+
 
 def read_json_data():
     with open('products.json') as f:
