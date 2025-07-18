@@ -28,12 +28,19 @@ def items():
 
 
 def read_json_data():
-    with open('products.json') as f:
-        return json.load(f)["products"]
+    try:
+        with open('products.json') as f:
+            return json.load(f)["products"]
+    except FileNotFoundError:
+        return {"error": "Fichier products.json introuvable."}
 
 def read_csv_data():
-    with open("products.csv", newline='') as f:
-        return list(csv.DictReader(f))
+    try:
+        with open("products.csv", newline='') as f:
+            return list(csv.DictReader(f))
+    except FileNotFoundError:
+        return {"error": "Fichier products.csv introuvable."}
+
 
 @app.route('/source')
 def products():
