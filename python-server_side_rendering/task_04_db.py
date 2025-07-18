@@ -67,10 +67,14 @@ def contact():
 
 @app.route('/items')
 def items():
-    json_path = os.path.join(os.path.dirname(__file__), 'items.json')
-    with open(json_path, 'r') as file:
-        data = json.load(file)
-    return render_template('items.html', items=data["items"])
+    try:
+        with open('items.json', 'r') as f:
+            data = json.load(f)
+            items_list = data.get("items", [])
+    except Exception as e:
+        print(f"{e}")
+        items_list = []
+    return render_template('items.html', items=items_list)
 
 # --- Route principale produits selon source ---
 
